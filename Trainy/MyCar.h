@@ -19,7 +19,10 @@ private:
 	MyWheel *wheels[4];
 
 public:
-	MyCar(int x, int y, int scale, bool isHead);
+	MyCar(int x, int y, int scale);
 	~MyCar();
+
+	void draw(Windows::UI::Xaml::Controls::Canvas^ canvas);
+	void move(int dx);
 };
 

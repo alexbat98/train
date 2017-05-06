@@ -5,6 +5,7 @@ class MyWheel :
 {
 public:
 	MyWheel(int x, int y, int scale) : MyRect(x, y, 4 * scale, 4 * scale) {};
-	~MyWheel();
+	void draw(Windows::UI::Xaml::Controls::Canvas^ canvas);
+	~MyWheel() {};
 };
 

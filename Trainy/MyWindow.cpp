@@ -10,4 +10,14 @@ void MyWindow::draw(Canvas^ canvas)
 {
 	Rectangle ^rect = ref new Rectangle();
 	rect->Width = this->width;
+	rect->Height = this->height;
+	rect->RadiusX = 3;
+	rect->RadiusY = 3;
+
+	rect->Fill = ref new SolidColorBrush(Windows::UI::Colors::AliceBlue);
+
+	Canvas::SetTop(rect, this->y);
+	Canvas::SetLeft(rect, this->x);
+
+	canvas->Children->Append(rect);
 }

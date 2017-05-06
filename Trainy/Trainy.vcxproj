@@ -139,6 +139,9 @@
     <ClInclude Include="MyBody.h" />
     <ClInclude Include="MyCar.h" />
     <ClInclude Include="MyDoor.h" />
+    <ClInclude Include="MyEngine.h" />
+    <ClInclude Include="MyLine.h" />
+    <ClInclude Include="MyLoc.h" />
     <ClInclude Include="MyPipe.h" />
     <ClInclude Include="MyRect.h" />
     <ClInclude Include="MyTrain.h" />
@@ -185,6 +188,9 @@
     <ClCompile Include="MyBody.cpp" />
     <ClCompile Include="MyCar.cpp" />
     <ClCompile Include="MyDoor.cpp" />
+    <ClCompile Include="MyEngine.cpp" />
+    <ClCompile Include="MyLine.cpp" />
+    <ClCompile Include="MyLoc.cpp" />
     <ClCompile Include="MyPipe.cpp" />
     <ClCompile Include="MyRect.cpp" />
     <ClCompile Include="MyTrain.cpp" />

@@ -5,6 +5,7 @@ class MyPipe :
 {
 public:
 	MyPipe(int x, int y, int scale) : MyRect(x, y, 4 * scale, 6 * scale) {};
-	~MyPipe();
+	void draw(Windows::UI::Xaml::Controls::Canvas^ canvas);
+	~MyPipe() {};
 };
 

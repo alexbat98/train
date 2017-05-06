@@ -6,8 +6,7 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 #include <string>
-#include "MyBody.h"
-#include "MyDoor.h"
+#include "MyTrain.h"
 
 using namespace Trainy;
 
@@ -27,11 +26,11 @@ using namespace Windows::UI::Xaml::Navigation;
 MainPage::MainPage()
 {
 	InitializeComponent();
-	MyBody body(10, 20, 10);
-	body.draw(this->canvas1);
 
-	MyDoor door(10, 16, 10);
-	door.draw(this->canvas1);
+	
+	MyTrain car(1450, 450, 15, 2);
+	//car.move(3);
+	car.draw(this->canvas1);
 }
 
 
