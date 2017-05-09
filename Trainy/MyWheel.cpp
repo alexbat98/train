@@ -9,7 +9,10 @@ using namespace Windows::UI::Xaml::Shapes;
 void MyWheel::draw(Canvas^ canvas)
 {
 
-	Ellipse ^el = ref new Ellipse();
+	if (el == nullptr) {
+		el = ref new Ellipse();
+		canvas->Children->Append(el);
+	}
 
 	el->Width = this->width;
 	el->Height = this->height;
@@ -18,7 +21,5 @@ void MyWheel::draw(Canvas^ canvas)
 
 	Canvas::SetTop(el, this->y);
 	Canvas::SetLeft(el, this->x);
-
-	canvas->Children->Append(el);
 
 }

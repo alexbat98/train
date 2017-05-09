@@ -8,7 +8,10 @@ using namespace Windows::UI::Xaml::Shapes;
 
 void MyPipe::draw(Canvas^ canvas)
 {
-	Rectangle ^rect = ref new Rectangle();
+	if (rect == nullptr) {
+		rect = ref new Rectangle();
+		canvas->Children->Append(rect);
+	}
 
 	rect->Width = this->width;
 	rect->Height = this->height;
@@ -18,5 +21,4 @@ void MyPipe::draw(Canvas^ canvas)
 	Canvas::SetTop(rect, this->y);
 	Canvas::SetLeft(rect, this->x);
 
-	canvas->Children->Append(rect);
 }

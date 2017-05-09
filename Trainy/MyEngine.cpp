@@ -23,11 +23,14 @@ void MyEngine::move(int dx)
 
 	x += dx;
 
-	leftLine = new MyLine(x, y, x + xt, y + yt);
-	middleLine = new MyLine(x + xt, y + yt, x + xt + 6 * scale, y + yt);
-	rightLine = new MyLine(x + 6 * scale, y, x + xt + 6 * scale, y + yt);
+	leftLine->repositionPreservingLenth(x, y, x + xt, y + yt);
+	middleLine->repositionPreservingLenth(x + xt, y + yt, x + xt + 6 * scale, y + yt);
+	rightLine->repositionPreservingLenth(x + 6 * scale, y, x + xt + 6 * scale, y + yt);
 
-	//double xt = 
+	//leftLine = new MyLine();
+	//middleLine = new MyLine(x + xt, y + yt, x + xt + 6 * scale, y + yt);
+	//rightLine = new MyLine(x + 6 * scale, y, x + xt + 6 * scale, y + yt);
+
 }
 
 void MyEngine::draw(Canvas^ canvas)

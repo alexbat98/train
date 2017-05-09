@@ -8,6 +8,9 @@
       <UniqueIdentifier>98108d59-bdf1-4a63-a903-e6fa09886602</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
+    <Filter Include="Train">
+      <UniqueIdentifier>{624aa934-bc51-482c-9a98-a63f484e7e54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -16,33 +19,77 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="MyRect.cpp" />
-    <ClCompile Include="MyWindow.cpp" />
-    <ClCompile Include="MyDoor.cpp" />
-    <ClCompile Include="MyBody.cpp" />
-    <ClCompile Include="MyWheel.cpp" />
-    <ClCompile Include="MyCar.cpp" />
-    <ClCompile Include="MyPipe.cpp" />
-    <ClCompile Include="MyTrain.cpp" />
-    <ClCompile Include="MyLine.cpp" />
-    <ClCompile Include="MyEngine.cpp" />
-    <ClCompile Include="MyLoc.cpp" />
+    <ClCompile Include="MyBody.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyCar.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDoor.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyEngine.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLine.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLoc.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPipe.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyRect.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTrain.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyWheel.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
+    <ClCompile Include="MyWindow.cpp">
+      <Filter>Train</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
-    <ClInclude Include="MyRect.h" />
-    <ClInclude Include="MyWindow.h" />
-    <ClInclude Include="MyDoor.h" />
-    <ClInclude Include="MyBody.h" />
-    <ClInclude Include="MyWheel.h" />
-    <ClInclude Include="MyCar.h" />
-    <ClInclude Include="MyPipe.h" />
-    <ClInclude Include="MyTrain.h" />
-    <ClInclude Include="MyLine.h" />
-    <ClInclude Include="MyEngine.h" />
-    <ClInclude Include="MyLoc.h" />
+    <ClInclude Include="MyBody.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCar.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDoor.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyEngine.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLine.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLoc.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPipe.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyRect.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTrain.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyWheel.h">
+      <Filter>Train</Filter>
+    </ClInclude>
+    <ClInclude Include="MyWindow.h">
+      <Filter>Train</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

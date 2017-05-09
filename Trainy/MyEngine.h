@@ -18,4 +18,3 @@ public:
 	void move(int dx);
 	void draw(Windows::UI::Xaml::Controls::Canvas^ canvas);
 };
-

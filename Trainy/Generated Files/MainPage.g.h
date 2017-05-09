@@ -13,6 +13,7 @@ namespace Windows {
             namespace Controls {
                 ref class Canvas;
                 ref class TextBox;
+                ref class Button;
             }
         }
     }
@@ -36,6 +37,9 @@ namespace Trainy
         private: ::Windows::UI::Xaml::Controls::Canvas^ canvas1;
         private: ::Windows::UI::Xaml::Controls::TextBox^ xCoord;
         private: ::Windows::UI::Xaml::Controls::TextBox^ yCoord;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ scale;
+        private: ::Windows::UI::Xaml::Controls::TextBox^ count;
+        private: ::Windows::UI::Xaml::Controls::Button^ buttonDraw;
     };
 }
 

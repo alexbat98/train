@@ -7,7 +7,10 @@ using namespace Windows::UI::Xaml::Shapes;
 
 void MyDoor::draw(Canvas^ canvas)
 {
-	Rectangle ^rect = ref new Rectangle();
+	if (rect == nullptr) {
+		rect = ref new Rectangle();
+		canvas->Children->Append(rect);
+	}
 	rect->Width = this->width;
 	rect->Height = this->height;
 
@@ -16,5 +19,4 @@ void MyDoor::draw(Canvas^ canvas)
 
 	rect->Fill = ref new SolidColorBrush(Windows::UI::Colors::LightSteelBlue);
 
-	canvas->Children->Append(rect);
 }

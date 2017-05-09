@@ -9,17 +9,14 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Height="32" Margin="30,45,30,0" VerticalAlignment="Top" Orientation="Horizontal">
-            
+
             <TextBox x:Name="xCoord" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="X coordinate" Margin="0, 0, 10, 0"/>
             <TextBox x:Name="yCoord" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="Y coordinate" Margin="0, 0, 10, 0"/>
-            <TextBox TextWrapping="Wrap" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="Scale" Margin="0, 0, 10, 0"/>
-            <TextBox TextWrapping="Wrap" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="Speed" Margin="0, 0, 10, 0"/>
-            <Button Content="Draw" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click" Margin="0, 0, 10, 0"/>
-            <Button Content="Go" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click2" Margin="0, 0, 10, 0"/>
+            <TextBox Name="scale" TextWrapping="Wrap" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="Scale" Margin="0, 0, 10, 0"/>
+            <TextBox Name="count" TextWrapping="Wrap" Text="" MaxWidth="180" InputScope="Number" PlaceholderText="Cars count" Margin="0, 0, 10, 0"/>
+            <Button Content="Draw" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ButtonDrawClick" Margin="0, 0, 10, 0"/>
+            <Button Content="Go" Name="buttonDraw" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="ButtonGoClick" Margin="0, 0, 10, 0"/>
         </StackPanel>
-        <!--<Grid Margin="30,110,30,30" BorderThickness="2" Name="box1"/>
-        <Grid Margin="30,110,30,30" BorderThickness="2" Name="box2"/>-->
         <Canvas Margin="30,110,30,30" Name="canvas1"/>
-
     </Grid>
 </Page>

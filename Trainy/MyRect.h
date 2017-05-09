@@ -1,4 +1,6 @@
 #pragma once
+using namespace Windows::UI::Xaml::Shapes;
+
 class MyRect
 {
 protected:
@@ -6,6 +8,8 @@ protected:
 	int y;
 	int width;
 	int height;
+	Rectangle ^rect;
+	Ellipse ^el;
 public:
 	MyRect(int x, int y, int w, int h);
 	MyRect(const MyRect& rect);

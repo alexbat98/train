@@ -20,63 +20,87 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::System::Threading;
+using namespace Windows::UI::Core;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
+
+
 
 MainPage::MainPage()
 {
 	InitializeComponent();
+	//timeSpan.Duration = 60 * 24;
 
-	
-	MyTrain car(1450, 450, 15, 2);
-	//car.move(3);
-	car.draw(this->canvas1);
-}
-
-
-void Trainy::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
-{
-	/*int l = std::stoi( xCoord->Text->Data() );
-	l *= 2;
-	yCoord->Text = l.ToString();
-	this->box2->Children->Clear();
-	Windows::UI::Xaml::Shapes::Rectangle ^rect = ref new Windows::UI::Xaml::Shapes::Rectangle();
-	Windows::UI::Xaml::Shapes::Ellipse el;
-	rect->Width = 200;
-	rect->Height = 200;
-
-	rect->Fill = ref new SolidColorBrush(Windows::UI::Colors::BlanchedAlmond);
-
-	this->box2->Children->Append(rect);*/
-}
-
-void Trainy::MainPage::Button_Click2(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
-{
-	/*this->box2->Children->Clear();
-	Windows::UI::Xaml::Shapes::Ellipse ^el = ref new Windows::UI::Xaml::Shapes::Ellipse();
-	el->Width = 200;
-	el->Height = 200;
-
-	el->Fill = ref new SolidColorBrush(Windows::UI::Colors::BlueViolet);
-
-	this->box2->Children->Append(el);*/
+	isRunning = false;
+	tick = false;
 
 }
 
-void Trainy::MainPage::onFormClicked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+/**
+* Отрабатывает нажатие на кнопку Draw
+*/
+void Trainy::MainPage::ButtonDrawClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	
+	// Очищаем canvas
+	this->canvas1->Children->Clear();
+
+	// задаем параметры
+	int x = std::stoi(xCoord->Text->Data());
+	int y = std::stoi(yCoord->Text->Data());
+	int c = std::stoi(count->Text->Data());
+	int s = std::stoi(scale->Text->Data());
+
+	// Создаем объект поезда и рисуем его
+	train = new MyTrain(x, y, s, c);
+	train->draw(this->canvas1);
+
 }
 
-void Trainy::MainPage::Temp_Click(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e)
+void Trainy::MainPage::ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	/*Windows::UI::Input::PointerPoint^ p = e->GetCurrentPoint(this->box2);
-	Windows::UI::Xaml::Shapes::Rectangle ^rect = ref new Windows::UI::Xaml::Shapes::Rectangle();
-	Windows::UI::Xaml::Shapes::Ellipse el;
-	rect->Width = 200;
-	rect->Height = 200;
+	// таймер
+	TimeSpan period;
+	// ~60 FPS
+	period.Duration = 166666;
 
-	rect->Margin = Windows::UI::Xaml::Thickness(p->Position.X, 0, p->Position.Y, 0);
+	// Если сейчас анимация не работает, запускаем
+	if (!isRunning)
+	{
+		// Обработка периодических событий таймера
+		pool = ThreadPoolTimer::CreatePeriodicTimer(
+			ref new TimerElapsedHandler([this](ThreadPoolTimer^ source)
+		{
+			//
+			// TODO: Work
+			//
 
-	this->box2->Children->Append(rect);*/
+			// Смещаем поезд
+			train->move(dx);
+
+			//
+			// Update the UI thread by using the UI core dispatcher.
+			//
+			Dispatcher->RunAsync(CoreDispatcherPriority::High,
+				ref new DispatchedHandler([this]()
+			{
+				// Отрисовываем его в потоке UI
+				train->draw(canvas1);
+				//
+				// UI components can be accessed within this scope.
+				//
+
+			}));
+
+		}), period);
+		isRunning = true;
+		buttonDraw->Content = "Stop";
+	}
+	else {
+		isRunning = false;
+		pool->Cancel();
+		pool = nullptr;
+		buttonDraw->Content = "Go";
+	}
+
 }

@@ -6,6 +6,10 @@
 #pragma once
 
 #include "MainPage.g.h"
+#include "MyTrain.h"
+
+using namespace Windows::System::Threading;
+using namespace Windows::UI::Core;
 
 namespace Trainy
 {
@@ -18,11 +22,13 @@ namespace Trainy
 		MainPage();
 
 	private:
-		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void Button_Click2(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-
-		void Temp_Click(Platform::Object^ sender, Windows::UI::Xaml::Input::PointerRoutedEventArgs^ e);
-
-		void Trainy::MainPage::onFormClicked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		MyTrain *train;
+		//Windows::System::TimeSpan *timeSpan;
+		const int dx = 1;
+		Windows::System::Threading::ThreadPoolTimer ^pool;
+		bool isRunning;
+		bool tick;
+		void ButtonDrawClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }
