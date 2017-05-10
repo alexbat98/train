@@ -55,6 +55,8 @@ void Trainy::MainPage::ButtonDrawClick(Platform::Object^ sender, Windows::UI::Xa
 	train = new MyTrain(x, y, s, c);
 	train->draw(this->canvas1);
 
+	maxPath = 38 * s + (38 * s*c) + (5 * s*c) + 500;
+
 }
 
 void Trainy::MainPage::ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
@@ -77,6 +79,13 @@ void Trainy::MainPage::ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml
 
 			// Смещаем поезд
 			train->move(dx);
+			path += dx;
+			
+			if (path >= maxPath) 
+			{
+				source->Cancel();
+				isRunning = false;
+			}
 
 			//
 			// Update the UI thread by using the UI core dispatcher.
@@ -86,6 +95,12 @@ void Trainy::MainPage::ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml
 			{
 				// Отрисовываем его в потоке UI
 				train->draw(canvas1);
+
+				if (!isRunning)
+				{
+					buttonDraw->Content = "Go";
+					path = 0;
+				}
 				//
 				// UI components can be accessed within this scope.
 				//
@@ -101,6 +116,7 @@ void Trainy::MainPage::ButtonGoClick(Platform::Object^ sender, Windows::UI::Xaml
 		pool->Cancel();
 		pool = nullptr;
 		buttonDraw->Content = "Go";
+		path = 0;
 	}
 
 }

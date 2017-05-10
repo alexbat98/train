@@ -16,21 +16,25 @@ MyEngine::MyEngine(int x, int y, int scale): x(x), y(y), scale(scale)
 
 void MyEngine::move(int dx)
 {
-	double phi = asin((double)dx / (2 *scale*scale) );
-
-	int xt = (int)(this->scale * cos(phi));
-	int yt = (int)(this->scale * sin(phi));
-
 	x += dx;
 
-	leftLine->repositionPreservingLenth(x, y, x + xt, y + yt);
-	middleLine->repositionPreservingLenth(x + xt, y + yt, x + xt + 6 * scale, y + yt);
-	rightLine->repositionPreservingLenth(x + 6 * scale, y, x + xt + 6 * scale, y + yt);
+	phi += ((double)dx) / ((double)(2 * scale));
 
-	//leftLine = new MyLine();
-	//middleLine = new MyLine(x + xt, y + yt, x + xt + 6 * scale, y + yt);
-	//rightLine = new MyLine(x + 6 * scale, y, x + xt + 6 * scale, y + yt);
+	// Защита от переполнения типа данных
+	if (phi > 2 * PI)
+		phi -= 2 * PI;
+	
+	double dxt = scale*cos(phi);
 
+	// x^2 + y^2 = r^2
+	// Если phi > PI (прошли половину окружности), меняем корня знак на противоположный
+	int yt = y + (int)sqrt(scale*scale - dxt*dxt) * (phi > PI ? -1 : 1);
+	int xt = (int)dxt + x;
+
+
+	leftLine->repositionPreservingLenth(x, y, xt, yt);
+	middleLine->repositionPreservingLenth(xt, yt, xt + 6 * scale, yt);
+	rightLine->repositionPreservingLenth(x + 6 * scale, y, xt + 6 * scale, yt);
 }
 
 void MyEngine::draw(Canvas^ canvas)

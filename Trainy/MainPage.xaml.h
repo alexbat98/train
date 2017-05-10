@@ -25,6 +25,8 @@ namespace Trainy
 		MyTrain *train;
 		//Windows::System::TimeSpan *timeSpan;
 		const int dx = 1;
+		int maxPath;
+		int path;
 		Windows::System::Threading::ThreadPoolTimer ^pool;
 		bool isRunning;
 		bool tick;
